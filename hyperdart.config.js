@@ -48,6 +48,6 @@ export default {
 		description: 'Search and compare flight prices, durations, and airline options',
 		category: 'Travel'
 	},
-	github: 'https://github.com/hyperdart/flight-proofcode',
-	demovideo: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+	github: 'https://github.com/Mahi9391/Flight-Proof-Card',
+	demovideo: 'https://www.youtube.com/watch?v=6ZxWegNTJ7Q'
 }
