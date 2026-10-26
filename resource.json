@@ -1,0 +1,91 @@
+{
+  "title": "Flight Search Resource",
+  "description": "Provides flight search results, prices, durations, airline details, and sorting capabilities for origin and destination queries.",
+  "componentScope": {
+    "supportedIntents": [
+      {
+        "intent": "flight-search",
+        "description": "Queries requesting flights between origin and destination cities or airport codes, including pricing and flight durations.",
+        "example": [
+          "flights from NYC to London",
+          "Delhi to Mumbai flights",
+          "flight from San Francisco to Tokyo",
+          "DEL to BOM flights",
+          "cheap flights from Paris to Rome"
+        ]
+      }
+    ]
+  },
+  "schema": {
+    "$defs": {
+      "categories": {
+        "type": "string",
+        "description": "Category of flight trip (e.g. One-way, Round-trip, Multi-city)"
+      },
+      "subtypes": {
+        "type": "string",
+        "description": "Cabin class: Economy, Premium Economy, Business, First Class"
+      },
+      "attributes": {
+        "type": "string",
+        "description": "Flight attributes such as price, duration, airline, stops, departureTime, arrivalTime"
+      },
+      "minMaxRange": {
+        "type": "object",
+        "description": "Numeric range filter for price or flight duration",
+        "properties": {
+          "min": {
+            "type": "number",
+            "description": "Minimum value"
+          },
+          "max": {
+            "type": "number",
+            "description": "Maximum value"
+          }
+        }
+      }
+    },
+    "type": "object",
+    "description": "Main flight search query object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "description": "Kind of request: 'list' for multiple flights or 'query' for filtered flights"
+      },
+      "filters": {
+        "type": "object",
+        "description": "Filters including origin, destination, date, stops, and price range",
+        "properties": {
+          "category": { "$ref": "#/$defs/categories" },
+          "subtype": { "$ref": "#/$defs/subtypes" },
+          "origin": {
+            "type": "string",
+            "description": "Origin city or IATA airport code (e.g. NYC, DEL, SFO)"
+          },
+          "destination": {
+            "type": "string",
+            "description": "Destination city or IATA airport code (e.g. LON, BOM, TYO)"
+          },
+          "date": {
+            "type": "string",
+            "description": "Departure date in YYYY-MM-DD format"
+          },
+          "sort": {
+            "type": "string",
+            "description": "Sorting criteria: cheapest, fastest, best, price_desc, duration_desc"
+          },
+          "rangeFilters": { "$ref": "#/$defs/minMaxRange" }
+        },
+        "additionalProperties": true
+      },
+      "features": {
+        "type": "array",
+        "items": { "$ref": "#/$defs/attributes" }
+      },
+      "entities": {
+        "collections": ["flights"]
+      }
+    },
+    "required": ["type", "filters", "features", "entities"]
+  }
+}

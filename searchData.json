@@ -1,0 +1,55 @@
+[
+  {
+    "component": "flight-proofcode",
+    "componentPrimaryName": "Flight Search",
+    "templateID": 804401,
+    "entities": [
+      {
+        "word": "NYC",
+        "wgID": 104401,
+        "wgName": "ORIGIN",
+        "templateID": 804401,
+        "entityInfo": null,
+        "componentName": "flight-proofcode",
+        "entityType": "AIRPORT_OR_CITY",
+        "sourceID": "word",
+        "description": "origin city or airport",
+        "priority": 5,
+        "isEnabled": 1,
+        "keywordRequired": 0,
+        "primaryText": "New York",
+        "relevanceScore": 95,
+        "sourceValue": 0,
+        "index": 0,
+        "primaryID": "word"
+      },
+      {
+        "word": "London",
+        "wgID": 104402,
+        "wgName": "DESTINATION",
+        "templateID": 804401,
+        "entityInfo": null,
+        "componentName": "flight-proofcode",
+        "entityType": "AIRPORT_OR_CITY",
+        "sourceID": "word",
+        "description": "destination city or airport",
+        "priority": 5,
+        "isEnabled": 1,
+        "keywordRequired": 0,
+        "primaryText": "London",
+        "relevanceScore": 95,
+        "sourceValue": 0,
+        "index": 1,
+        "primaryID": "word"
+      }
+    ],
+    "query": "flights from NYC to London",
+    "componentEnabled": true,
+    "keyword": ["flight", "flights"],
+    "disambiguationType": 1,
+    "time": "2026-10-26T12:00:00.000Z",
+    "quickView": 3,
+    "queryRegex": "flights? (?:from )?([a-zA-Z\\s]+) to ([a-zA-Z\\s]+)",
+    "componentType": "internal"
+  }
+]
